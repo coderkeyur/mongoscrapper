@@ -30,6 +30,17 @@ app.get("/", function(req, res) {
     res.render("index");
 });
 
+app.get("/scrape", function(req,res) {
+    var found;
+    var titleArr = [];
+    db.Article.find({})
+    .then(function(dbArticle) {
+        for (var i=0; i<dbArticle.length; i++) {
+            titleArr.push(dbArticle[i].title)
+        }
+        
+    })
+})
 
 app.listen(PORT, function() {
     console.log("App is running on port " + PORT + "!");
